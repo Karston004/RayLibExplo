@@ -1,6 +1,7 @@
 #include "raylib.h"
 
 int main() {
+    SetTraceLogLevel(LOG_NONE);
     InitWindow(800, 600, "Raylib Example");
 
     while (!WindowShouldClose()) {
