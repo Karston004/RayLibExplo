@@ -1,11 +1,10 @@
 #include "raylib.h"
 #include <cmath>  // for sin, cos
-
 int main() {
     SetTraceLogLevel(LOG_NONE);
     const int screenWidth = 800;
     const int screenHeight = 600;
-
+    
     InitWindow(screenWidth, screenHeight, "Raylib - Hexagon Example");
 
     SetTargetFPS(60);
@@ -18,18 +17,13 @@ int main() {
         ClearBackground(RAYWHITE);
 
         // Draw hexagon (filled using triangles)
+        //ERROR - Need fix
         for (int i = 0; i < 6; i++) {
             float angle1 = DEG2RAD * (60 * i);
             float angle2 = DEG2RAD * (60 * (i + 1));
 
-            Vector2 p1 = {
-                float(center.x + radius * cos(angle1)),
-                float(center.y + radius * sin(angle1))
-            };
-            Vector2 p2 = {
-                float(center.x + radius * cos(angle2)),
-                float(center.y + radius * sin(angle2))
-            };
+            Vector2 p1 = { center.x + radius * (float)cos(angle1), center.y + radius * (float)sin(angle1) };
+            Vector2 p2 = { center.x + radius * (float)cos(angle2), center.y + radius * (float)sin(angle2) };
 
             DrawTriangle(center, p1, p2, DARKBLUE);
         }
@@ -47,7 +41,7 @@ int main() {
                 float(center.y + radius * sin(angle2))
             };
 
-            DrawLineV(p1, p2, DARKBLUE);
+            DrawLineV(p1, p2, SKYBLUE);
         }
 
         EndDrawing();
