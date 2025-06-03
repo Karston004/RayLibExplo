@@ -2,7 +2,7 @@
 #include <cmath>  // for sin, cos
 
 int main() {
-    //SetTraceLogLevel(LOG_NONE);
+    SetTraceLogLevel(LOG_NONE);
     const int screenWidth = 800;
     const int screenHeight = 600;
 
@@ -31,7 +31,7 @@ int main() {
                 float(center.y + radius * sin(angle2))
             };
 
-            DrawTriangle(center, p1, p2, BLACK);
+            DrawTriangle(center, p1, p2, DARKBLUE);
         }
         // Optional: draw outline
         for (int i = 0; i < 6; i++) {
