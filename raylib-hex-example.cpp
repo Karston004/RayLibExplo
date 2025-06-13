@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include <cmath>  // for sin, cos
+#include <iostream>
 int main() {
     SetTraceLogLevel(LOG_NONE);
     const int screenWidth = 800;
@@ -9,15 +10,14 @@ int main() {
 
     SetTargetFPS(60);
 
-    Vector2 center = {400, 300};
+    Vector2 center = {screenWidth / 2.0f, screenHeight / 2.0f};
     float radius = 100;
-
+    std::cout << center.x << "," << center.y << std::endl;
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
         // Draw hexagon (filled using triangles)
-        //ERROR - Need fix
         for (int i = 0; i < 6; i++) {
             float angle1 = DEG2RAD * (60 * i);
             float angle2 = DEG2RAD * (60 * (i + 1));
@@ -25,7 +25,7 @@ int main() {
             Vector2 p1 = { center.x + radius * (float)cos(angle1), center.y + radius * (float)sin(angle1) };
             Vector2 p2 = { center.x + radius * (float)cos(angle2), center.y + radius * (float)sin(angle2) };
 
-            DrawTriangle(center, p1, p2, DARKBLUE);
+            DrawTriangle(center, p2, p1, DARKBLUE);
         }
         // Optional: draw outline
         for (int i = 0; i < 6; i++) {
@@ -41,7 +41,7 @@ int main() {
                 float(center.y + radius * sin(angle2))
             };
 
-            DrawLineV(p1, p2, SKYBLUE);
+            DrawLineEx(p1, p2, 5, BLACK);
         }
 
         EndDrawing();
